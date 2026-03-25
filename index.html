@@ -3,86 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solomon Kin Records | Official Corporate Ledger</title>
+    <title>Solomon Kin Records | Official Corporate & Legal Ledger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-bg: #0f172a; /* Deep Slate */
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --legal-red: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #f4f7f6;
+            overflow-x: hidden;
         }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Hero Section */
         header {
-            border-bottom: 3px solid #2c3e50;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .subtitle {
-            font-style: italic;
-            color: #7f8c8d;
-        }
-        section {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .mission-box {
-            border-left: 5px solid #2980b9;
-            padding-left: 20px;
-            margin: 20px 0;
-            background: #ecf0f1;
-        }
-        h2 {
-            color: #2980b9;
-        }
-        footer {
-            margin-top: 40px;
-            font-size: 0.9em;
+            padding: 100px 5% 60px;
             text-align: center;
-            color: #95a5a6;
+            max-width: 1000px;
+            margin: 0 auto;
         }
+        header h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 900; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { color: var(--text-muted); font-size: 1.2rem; }
+
+        /* Record Grid */
+        .container { padding: 60px 5%; }
+        .section-title { font-size: 1.5rem; margin-bottom: 30px; border-left: 4px solid var(--accent-gold); padding-left: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .records-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        .record-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .record-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            background: rgba(30, 41, 59, 0.9);
+        }
+        .record-card h3 { color: var(--accent-gold); margin-bottom: 10px; font-size: 1.1rem; }
+        .record-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255,255,255,0.02);
+            padding: 60px 5%;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto 100px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+        }
+        .submit-btn {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        /* Footer / Legal */
+        footer {
+            padding: 60px 5%;
+            background: #000;
+            border-top: 1px solid var(--legal-red);
+        }
+        .legal-notice { font-size: 0.75rem; color: #64748b; margin-top: 20px; line-height: 1.8; }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="logo">Solomon Kin Records</div>
+    <div class="nav-links">
+        <a href="#commercial">Commercial</a>
+        <a href="#foundations">Foundations</a>
+        <a href="LEGAL_STATEMENTS.html">Legal Center</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
 <header>
-    <h1>Solomon Kin Records</h1>
-    <div class="subtitle">Official Repository for Affiliations, Companies, and Foundations</div>
+    <h1>The Central Administrative Registry</h1>
+    <p>Official record-bearing community organization. We manage the affiliations, contracts, and people governing the Solomon Kin ecosystem.</p>
 </header>
 
-<main>
-    <section>
-        <h2>Purpose of this Archive</h2>
-        <p>Welcome to the official record-bearing platform for <strong>Solomon Kin Records</strong>. This site has been established to serve as the definitive ledger for our complex ecosystem of for-profit companies, nonprofit organizations, and charitable foundations.</p>
-        
-        <div class="mission-box">
-            <p><strong>Our Role:</strong> We are a company record-keeping and management firm. We specialize in the administration of people, the oversight of corporate affiliations, and the documentation of inter-company contractual obligations.</p>
-        </div>
+<div class="container">
+    <h2 class="section-title" id="commercial">Corporate & Commercial Entities</h2>
+    <div class="records-grid">
+        <a href="records/solomon-kin-records.html" class="record-card">
+            <h3>Solomon Kin Records LLC</h3>
+            <p>Parent Media Group & Primary Management Authority.</p>
+        </a>
+        <a href="records/castaistars.html" class="record-card">
+            <h3>CastAiStars.com</h3>
+            <p>Digital talent agency for AI characters and virtual influencers.</p>
+        </a>
+        <a href="records/global-citizen-joe.html" class="record-card">
+            <h3>Global Citizen Joe LLC</h3>
+            <p>Commodity distribution systems and coffee logistics.</p>
+        </a>
+        <a href="records/filthy-seduction.html" class="record-card">
+            <h3>Filthy Seduction Productions</h3>
+            <p>High-end multimedia and film production services.</p>
+        </a>
+        <a href="records/realm-pictures.html" class="record-card">
+            <h3>REALM Pictures</h3>
+            <p>Archive of cinematic intellectual property and treatments.</p>
+        </a>
+        <a href="records/gcj-windmill.html" class="record-card">
+            <h3>GCJ Windmill System</h3>
+            <p>Sustainable energy infrastructure and engineering.</p>
+        </a>
+    </div>
 
-        <h3>Scope of Documentation</h3>
-        <p>This site replaces previous web iterations to focus strictly on data integrity and historical accuracy. We document:</p>
-        <ul>
-            <li><strong>Corporate Affiliations:</strong> Mapping the relationships between all entities within the Solomon Kin umbrella.</li>
-            <li><strong>Inter-Company Contracts:</strong> Recording the specific instances of collaboration and service agreements between our internal organizations.</li>
-            <li><strong>Nonprofit Oversight:</strong> Managing the records and foundational filings for our community-focused entities.</li>
-            <li><strong>Management Records:</strong> Centralizing the data regarding the personnel and leadership governing these affiliations.</li>
-        </ul>
+    <h2 class="section-title" id="foundations">Nonprofits & Foundations</h2>
+    <div class="records-grid">
+        <a href="records/koinonia-grace.html" class="record-card">
+            <h3>Koinonia Grace Foundation</h3>
+            <p>Board-managed youth development and community wellness.</p>
+        </a>
+        <a href="records/aea-corp.html" class="record-card">
+            <h3>Against Electronic Abuse Corp</h3>
+            <p>Advocacy for protection against digital harassment.</p>
+        </a>
+        <a href="records/ai-ipvb.html" class="record-card">
+            <h3>AI-IP Verification Bureau</h3>
+            <p>Validating and protecting AI-generated intellectual property.</p>
+        </a>
+        <a href="records/national-identity.html" class="record-card">
+            <h3>Bureau of National Identity</h3>
+            <p>Public records management and identity protection initiatives.</p>
+        </a>
+        <a href="records/if-i-was-ai.html" class="record-card">
+            <h3>If I Was AI Foundation</h3>
+            <p>Ethical research and the intersection of humanity and AI.</p>
+        </a>
+        <a href="records/vexilla-vanguard.html" class="record-card">
+            <h3>Vexilla Vanguard Collective</h3>
+            <p>Community arts organization and creative coordination.</p>
+        </a>
+    </div>
+</div>
 
-        <p>As a community organization of affiliations, this site ensures that every instance of organizational activity is logged, verified, and accessible for administrative management.</p>
-    </section>
-</main>
+<section class="contact-section" id="contact">
+    <h2 class="section-title">Record Inquiry Form</h2>
+    <form class="contact-form">
+        <input type="text" placeholder="Full Legal Name" required>
+        <input type="email" placeholder="Professional Email" required>
+        <input type="text" placeholder="Associated Organization (If applicable)">
+        <textarea rows="5" placeholder="Nature of Record Inquiry / Affiliation Request"></textarea>
+        <button type="submit" class="submit-btn">Transmit Request</button>
+    </form>
+</section>
 
 <footer>
-    &copy; 2019 to present Solomon Kin Records | Authorized Personnel Only
+    <div class="logo" style="margin-bottom: 20px;">Solomon Kin Records</div>
+    <div class="legal-notice">
+        <strong>LEGAL DECLARATION:</strong> All entities listed are part of a private record-bearing community organization. All intellectual property, company structures, and contract instances are protected under the U.S. Copyright Act and the Lanham Act. Unauthorized use of these records constitutes a violation of trade secret protections (DTSA). First Claim 2026.
+    </div>
 </footer>
 
 </body>
